@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge,chrome=1">
+    <meta name="renderer" content="webkit">
+    <title>select2</title>
+    <script src="http://libs.baidu.com/jquery/2.1.4/jquery.min.js"></script>
+    <script type="text/javascript" src="./libs/select2/select2.full.min.js"></script>
+    <script type="text/javascript" src="./libs/select2/zh-CN.js"></script>
+    <script type="text/javascript" src="./libs/jsonview/jquery.jsonview.min.js"></script>
+    <script type="text/javascript" src="./script/index.js"></script>
+    <link rel="stylesheet" href="./libs/select2/select2.min.css">
+    <link rel="stylesheet" href="./libs/jsonview/jquery.jsonview.min.css">
+    <link rel="stylesheet" href="./css/index.css">
+</head>
+<body>
+	<div class="box">
+		<div class="inner">
+			<label for="normalSetting">常用配置 : </label>
+			<select name="normalSetting" id="normalSetting">
+				<option value="1_1">大庆</option>
+				<option value="2_1">长春</option>
+				<option value="3_1">大连</option>
+			</select>
+			<div class="desc">
+				<table class="api">
+					<thead>
+						<tr>
+							<th>配置</th>
+							<th>说明</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td class="key">width</td>
+							<td>String select框的宽度,默认为自适应option的内容</td>
+						</tr>
+						<tr>
+							<td class="key">placeholder</td>
+							<td>String 显示的placeholder内容</td>
+						</tr>
+						<tr>
+							<td class="key">allowClear</td>
+							<td>Boolean 是否显示清除的图标 x </td>
+						</tr>
+						<tr>
+							<td class="key">language</td>
+							<td>String 语言设置, 中文为zh-CN</td>
+						</tr>
+						<tr>
+							<td colspan="2">allowClear设置为true时, placeholder必须设置,即使设置为空格也要有, 否则清除无效</td>
+						</tr>
+					</tbody>
+				</table>
+				<div class="code">
+					<h3>option code</h3>
+					<div id="normalCode"></div>
+				</div>
+			</div>
+		</div>
+		<div class="inner">
+			<label for="cancelSearch">取消搜索 : </label>
+			<select name="cancelSearch" id="cancelSearch">
+				<option value="1_1">大庆</option>
+				<option value="2_1">长春</option>
+				<option value="3_1">大连</option>
+			</select>
+			<div class="desc">
+				<table class="api">
+					<thead>
+						<tr>
+							<th>配置</th>
+							<th>说明</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td class="key">minimumResultsForSearch</td>
+							<td>Number 设置为-1, 关闭搜索功能</td>
+						</tr>
+					</tbody>
+				</table>
+				<div class="code">
+					<h3>option code</h3>
+					<div id="cancelSearchCode"></div>
+				</div>
+			</div>
+		</div>
+		<div class="inner">
+			<label for="minAndMaxSearchKey">搜索输入限制 : </label>
+			<select name="minAndMaxSearchKey" id="minAndMaxSearchKey">
+				<option value="1_1">大庆石油</option>
+				<option value="2_1">长春长生</option>
+				<option value="3_1">大连海鲜</option>
+			</select>
+			<div class="desc">
+				<table class="api">
+					<thead>
+						<tr>
+							<th>配置</th>
+							<th>说明</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td class="key">minimumInputLength</td>
+							<td>Number 最少输入字符,  少于则不触发搜索</td>
+						</tr>
+						<tr>
+							<td class="key">maximumInputLength</td>
+							<td>Number 最多输入字符,  多于则不触发搜索</td>
+						</tr>
+						<tr>
+							<td colspan="2">当minimumInputLength设置大于0时, 默认展开时, 没有选项, 需输入达到设置值后才会有option</td>
+						</tr>
+					</tbody>
+				</table>
+				<div class="code">
+					<h3>option code</h3>
+					<div id="minAndMaxSearchKeyCode"></div>
+				</div>
+			</div>
+		</div>
+		<div class="inner">
+			<label for="useJsInitData">js初始化 : </label>
+			<select name="useJsInitData" id="useJsInitData">
+			</select>
+			<div class="desc">
+				<table class="api">
+					<thead>
+						<tr>
+							<th>配置</th>
+							<th>说明</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td class="key">data</td>
+							<td>Array-Object的map格式数组, 对象的必要字段为id和text, id为选中后的value, text为option的显示文本</td>
+						</tr>
+						<tr>
+							<td colspan="2">不使用html-option标签, 使用js初始化</td>
+						</tr>
+					</tbody>
+				</table>
+				<div class="code">
+					<h3>option code</h3>
+					<div id="useJsInitDataCode"></div>
+				</div>
+			</div>
+		</div>
+		<div class="inner">
+			<label for="ajaxGetData">ajax请求数据并搜索 : </label>
+			<select name="ajaxGetData" id="ajaxGetData">
+			</select>
+			<div class="desc">
+				<table class="api">
+					<thead>
+						<tr>
+							<th>配置</th>
+							<th>说明</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td class="key">ajax</td>
+							<td>Object 请求数据的配置, 包括参数和返回数据的处理</td>
+						</tr>
+						<tr>
+							<td class="key">ajax.type</td>
+							<td>String 与后台传递数据的方式, get / post</td>
+						</tr>
+						<tr>
+							<td class="key">ajax.url</td>
+							<td>String 请求数据的url</td>
+						</tr>
+						<tr>
+							<td class="key">ajax.dataType</td>
+							<td>String 返回的数据格式</td>
+						</tr>
+						<tr>
+							<td class="key">ajax.delay</td>
+							<td>Number 键盘抬起后延迟发送请求的时间, 到位毫秒</td>
+						</tr>
+						<tr>
+							<td class="key">ajax.data</td>
+							<td>Function 函数有一个Object参数, 里面包括输入的内容和当前的页码</td>
+						</tr>
+						<tr>
+							<td class="key">ajax.processResults</td>
+							<td>Function 函数有两个参数, 返回的数据和传递的参数, 此函数相当于数据预处理函数, 将后台返回的数据加工成select2识别的数据, 函数内部返回一个对象, 包括select2应用的数据results和是否还有下一页数据的pagination.more标识</td>
+						</tr>
+					</tbody>
+				</table>
+				<div class="code ajaxCode">
+					<h3>option code</h3>
+					<button>点击显示</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="box" id="box">
+		<div class="left">
+			<div>
+				<h3>多选</h3>
+				<div>
+					<label for="multipleSelect">兴趣选择 : </label>
+					<select name="multipleSelect" id="multipleSelect" multiple="multiple">
+						<option value="lq">篮球</option>
+						<option value="zq">足球</option>
+						<option value="qq">铅球</option>
+						<option value="ppq">乒乓球</option>
+						<option value="ymq">羽毛球</option>
+						<option value="tq">台球</option>
+					</select>
+				</div>
+				<div>
+					<p>多选的配置和单选相同, 只是增加了选项数量的限制 maximumSelectionLength, 同时html标签select要增加multiple="multiple"属性, 在获取值时, 得到的时选中的option的value构成的数组</p>
+				</div>
+			</div>
+			<hr>
+			<div>
+				<h3>设置默认选项</h3>
+				<div>
+					<div class="detail">
+						<p>设置默认选项可是个头疼的问题, 原因在于当option数据是固定的还好, 直接将option数据增加字段, selected: true即可.{id:2, text:吉林,selected: true},html直接写option标签的话,直接增加selected属性&lt;option value="jl" selected&gt;吉林&lt;/option&gt;<br>
+						麻烦的在于数据是从后台请求过来的, 但是当页面刚刚加载时, select2下方还没有option数据, 但此时就要设置上默认选中项了. 这是根据相应接口返回的option的value和text,生成一个option标签,并追加到select标签当中</p>
+					</div>
+				</div>
+				<div class="deadDate">
+					<label for="deadDate1">固定数据 : </label>
+					<select name="deadDate1" id="deadDate1">
+						<option value="hlj">黑龙江</option>
+						<option value="jl" selected>吉林</option>
+						<option value="ln">辽宁</option>
+					</select>	
+					<label for="deadDate2">固定数据 : </label>
+					<select name="deadDate2" id="deadDate2"></select>					
+				</div>
+				<div class="sayncData">
+					<label for="sayncData">接口请求数据 : </label>
+					<select name="sayncData" id="sayncData"></select>	
+				</div>
+			</div>
+			<hr>
+			<div>
+				<h3>切换data数据</h3>
+				<div>
+					<label for="changePropvience">省份 : </label>
+					<select name="changePropvience" id="changePropvience">
+						<option value=""></option>
+						<option value="hlj">黑龙江</option>
+						<option value="jl">吉林</option>
+						<option value="ln">辽宁</option>
+					</select>
+					<label for="mainCity">城市 : </label>
+					<select name="mainCity" id="mainCity"></select>
+				</div>
+				<div class="detail">
+					<div>
+						<span>基本思路</span>
+						<p>通过监测省份select2的选中事件, 使用不同的数据重初始化城市的select2, 事先封装了一个初始化城市的函数,传入data.</p>
+					</div>
+					<div>
+						<span>注意事项</span>
+						<p>页面加载省份没有选中数据, 此时要使用空数组初始化一下城市, 保证渲染上select2的样式.</p>
+						<p>当省份没有选择而去选择城市时, 为了用户体验, 弹出提示, 并使用close方法将城市的下拉框关闭.</p>
+					</div>
+					<div>
+						<span>坑1</span>
+						<p>切换的数据的id不能有重复的, 否则无效果, 重复的id的会保留切换之前的数据</p>
+					</div>
+					<div>
+						<span>坑2</span>
+						<p>即使数据的id各不相同, 但是会出现数据追加的现象, 而不是我们想象的替换. 原因为上一次初始化后, 在select下生成了相应的option, 再次初始化的数据和上一次的option相加了, 所以数据越切换越多. 解决办法是初始化之前向将select内容清空.</p>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="center">
+			<h3 id="jsSelected">API</h3>
+			<div>
+				<label for="apiSelect">省份 : </label>
+				<select name="apiSelect" id="apiSelect">
+					<option value=""></option>
+					<option value="hlj">黑龙江</option>
+					<option value="jl">吉林</option>
+					<option value="ln">辽宁</option>
+				</select>
+				<span>
+					<span>状态 : </span>
+					<span class="status"></span>
+				</span>
+			</div>
+			<div class="detail">
+				<h2>事件</h2>
+				<div>
+					<span>点击下拉中的option的事件</span>
+					<p>使用on绑定事件 select2:select</p>
+				</div>
+				<div>
+					<span>select展开的事件</span>
+					<p>使用on绑定事件 select2:open</p>
+				</div>
+				<div>
+					<span>select关闭的事件</span>
+					<p>使用on绑定事件 select2:close</p>
+				</div>
+				<div>
+					<span>select点击清除图标的事件</span>
+					<p>使用on绑定事件 select2:clear</p>
+				</div>
+				<div>
+					<span>说明</span>
+					<p>事件中的this都是原生的select框, <br>
+					可通过 $(this).val()获取选中的option的value值, <br>
+					可通过$(this).find("option:selected").text(),获取选中的option的文本值.</p>
+				</div>
+				<div>
+					<span>其他</span>
+					<p>其他事件可参考官网 <a href="https://select2.org/programmatic-control/events" target="_blank">select2的事件</a></p>
+				</div>
+				<h2>方法</h2>
+				<div class="apis">
+					<div>
+						<span>展开</span>
+						<p>select2("open")</p>
+						<button class="openMtd">展开</button>
+					</div>
+					<div>
+						<span>关闭</span>
+						<p>select2("close")</p>
+						<button class="closeMtd">关闭</button>
+					</div>
+					<div>
+						<span>销毁</span>
+						<p>select2("destroy")</p>
+						<button class="destroyMtd">销毁</button>
+					</div>
+					<div>
+						<span>初始化</span>
+						<p>select2({})</p>
+						<button class="initMtd">初始化</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="right">
+			<h3>语言配置</h3>
+			<div>
+				<label for="settingLanguage">语言配置 : </label>
+				<select name="settingLanguage" id="settingLanguage">
+					<option value=""></option>
+					<option value="hlj">黑龙江</option>
+					<option value="jl">吉林</option>
+					<option value="ln">辽宁</option>
+				</select>
+				<span>
+					<span>状态 : </span>
+					<span class="status"></span>
+				</span>
+			</div>
+			<div>
+				<p>当设置了 language: "zh-CN"后, 所有状态的提示都转换为中文, 但是有时候我们还是要对一些特殊的选择框进行特殊的提示, 此时可以针对某个select进行语言的配置</p>
+<pre>
+$("#settingLanguage").select2({
+	width:"200px",
+	placeholder:"请选择省份",
+	allowClear:true,
+	language: {
+        noResults: function() {
+　　　　　　　　　return "语言配置-未找到结果"; // 无结果
+　　　　　　　},
+        searching: function() {
+　　　　　　　　　return "语言配置-数据加载中…"; // 搜索中
+　　　　　　　},
+        errorLoading: function(){
+            return "语言配置-无法载入结果"; // 错误
+        },
+        loadingMore: function(){
+            return "语言配置-载入更多结果…"; // 加载更多
+        },
+        inputTooShort: function(e){
+            var t = e.minimum - e.input.length;
+            return "语言配置-请再输入至少" + t + "个字符"; // 少于几个字符
+        },
+        inputTooLong: function(e){
+            var t = e.input.length - e.maximum;
+            return "语言配置-请删除" + t + "个字符"; // 超过了几个字符
+        },
+        maximumSelected: function(e){
+            var t = "t语言配置-最多只能选择" + e.maximum + "个项目"; 多选的设置
+            return t;
+        }
+　　　　}
+});
+</pre>
+			</div>
+		</div>
+	</div>
+<!-- ajax code -->
+<pre id="ajaxGetDataCode">
+{
+	language: "zh-CN",
+	width:"120px",
+	ajax: {
+		url:"http://localhost:3000",
+		dataType:"json",
+		type:"get",
+		data: function(params){
+			return {
+				pageIndex: params.page || 1,
+				searchText: params.term || '',
+				pageSize: 7
+			}
+		},
+		processResults: function(data, params){
+			console.log(data);	
+			if(data.code === 200){
+				var tmp = [];
+				for(var i=0; i< data.data.length; i++){
+					tmp.push({
+						text: data.data[i].name,
+						id: data.data[i].id
+					});
+				}
+				var moreFlag = true;
+				console.log(data.data.length === 0);
+				if(data.data.length === 0){
+					moreFlag = false;
+				}
+				return {
+                    results: tmp,
+                    pagination: {
+                        more: moreFlag
+                    }
+                };
+			}else{
+				return {
+                    results: [],
+                    pagination: {
+                        more: false
+                    }
+                };
+			}
+		}
+	}
+}
+</pre>
+<div class="bg"></div>
+</body>
+</html>

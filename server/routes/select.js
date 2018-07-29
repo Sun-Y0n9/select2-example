@@ -70,26 +70,26 @@ function filterData(pageIndex, pageSize, serachText){
       return reg.test(ele.name)
     });
     let data = tmp.slice((pageIndex - 1) * pageSize,pageIndex * pageSize);
-    return data;
+    return {
+      all: tmp,
+      ret: data
+    };
 };
 router.get('/', function(req, res, next) {
     var pageIndex = req.query.pageIndex;
     var searchText = req.query.searchText;
     var pageSize = req.query.pageSize;
     let data = filterData(pageIndex, pageSize, searchText || "");
-    if(data.length > 0){
+    console.log(data);
+    if(data.ret.length > 0){
       res.json({
-        data:data,
+        data:data.ret,
         code:200,
-        count:data.length,
-        pageCount: Math.ceil(data.length / pageSize)
       })
     }else{
       res.json({
         data:[],
         code:200,
-        count:0,
-        pageCount:0
       })
     }
 });

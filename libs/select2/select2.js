@@ -3296,7 +3296,7 @@ S2.define('select2/data/select',[
       if (option.textContent !== undefined) {
         option.textContent = data.text;
         for(var k in data){
-          $(option).attr("data-st" + k, data[k]);
+          $(option).attr("data-st2" + k, data[k]);
         }
       } else {
         option.innerText = data.text;
