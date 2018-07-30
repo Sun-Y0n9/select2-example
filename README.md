@@ -3,7 +3,6 @@
 npm install
 ```
 ### 启动后台
-+ 在server/bin 下, 执行.
 ```shell
 npm run start
 ```
